@@ -1,0 +1,61 @@
+{% extends "worker/layout.html" %}
+
+{% block body %}
+<div class="container rent">
+	<div>
+	<h1>Rent Your Tools here! </h1>
+<form action="{% url 'rent' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="tool" placeholder="Tool">
+            <input class="form-control" autofocus type="uplode" name="image" placeholder="IMage">
+            <input class="form-control" autofocus type="text" name="desc" placeholder="Description">
+            <input class="form-control" autofocus type="text" name="price" placeholder="Price">
+            <input class="form-control" autofocus type="text" name="owner" placeholder="owner">
+            <input class="form-control" autofocus type="text" name="country" placeholder="country">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
+
+	<h1>Available Tools</h1>
+	<!-- <div class="tool">
+		{% for tool in tools%}
+		<div >
+			<p>{{tool.tool}}</p>
+			<p>{{tool.desc}}</p>
+			<p><img src="{{tool.image}}"></p>
+			<p>{{tool.owner}}</p>
+			<p>{{tool.price}}</p>
+		</div>
+	{% endfor %}
+
+	</div> -->
+	
+
+<div class="deck">
+{% for tool in tools%}
+	
+  <div class="card">
+    <img src="{{tool.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{tool.tool}}</h5>
+    </div>
+    <div class="card-footer">
+      <p><small class="text-muted">Owner: {{tool.owner}} </small></p>
+      <p><small class="text-muted">Price: ${{tool.price}}</small></p>
+     
+      <p><small class="text-muted"><a href="{% url 'borrow' tool.id %}">More details</a></small></p>
+      
+    </div>
+  </div>
+  
+
+{% endfor %}
+</div>
+
+
+
+</div>
+
+{% endblock %}

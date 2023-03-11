@@ -1,0 +1,20 @@
+{% extends "worker/layout.html" %}
+
+{% block body %}
+		 {% if user.is_authenticated %}
+
+		<h2>{{user.username}}'s Profile</h2>
+	
+	<div>
+		{% for u in user %}
+		<img src="{{u.picture}}">
+		<p>{{u.job}}</p>
+		<p>{{u.country}}</p>
+		<p>{{u.email}}</p>
+
+		{% endfor %}
+	</div>
+
+
+	{% endif %}
+{% endblock %}

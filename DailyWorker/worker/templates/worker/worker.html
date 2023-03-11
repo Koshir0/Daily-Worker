@@ -1,0 +1,50 @@
+{% extends "worker/layout.html" %}
+
+{% block body %}
+<div class="container workerpage">
+		
+	<div>
+		<h1>Worker Page</h1>
+
+    {% if user.is_authenticated %}
+    	<p>Worker: {{user.username}}</p>
+    	<p><img src="{{user.picture}}" width="150"></p>
+        <p>Name: {{user.title}} {{user.first_name}} {{user.last_name}}</p>
+		<p>Job: {{user.job}}</p>
+		<p>From: {{user.country}}</p>
+		<p>Email: {{user.email}}</p>
+        <p>Gender: {{user.gender}}</p>
+        <p>Phone Number: {{user.phone}}</p>
+        <p>Nat:{{user.nat}}</p>
+
+	</div>
+    
+		<div >
+			<h3>Update your info:</h3>
+    <form action="{% url 'worker' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="title" placeholder="Title">
+            <input class="form-control" autofocus type="text" name="fname" placeholder="First Name">
+            <input class="form-control" autofocus type="text" name="lname" placeholder="Last Name">
+            <input class="form-control" autofocus type="text" name="avater" placeholder="Avatar">
+            <input class="form-control" autofocus type="text" name="phone" placeholder="Phone Number">
+            <input class="form-control" autofocus type="text" name="job" placeholder="Job">
+            <input class="form-control" autofocus type="text" name="gender" placeholder="Gender">
+            <input class="form-control" autofocus type="text" name="nat" placeholder="Nat">
+            <input class="form-control" autofocus type="email" name="email" placeholder="Email">
+            <input class="form-control" autofocus type="text" name="country" placeholder="Country">
+
+
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Update Your info">
+    </form>
+		</div>
+		
+    {% endif %}
+</div>
+    
+
+	
+{% endblock %} 

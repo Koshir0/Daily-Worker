@@ -1,0 +1,2 @@
+web: gunicorn DailyWorker.wsgi --log-file -
+

@@ -1,0 +1,49 @@
+{% extends "worker/layout.html" %}
+
+{% block body %}
+<div class="container ">
+<h1>RESERVE  >>> {{tool.tool}}</h1>
+
+<div class="reserve">
+<div id="reserve">
+		<img src="{{tool.image}}"  >
+		{% if tool.desc != ""%}
+		<p>Properiters >>> {{tool.desc}}</p>
+			{% endif %}
+		<p>Price >>> ${{tool.price}}</p>
+		<p>Owner >>> {{tool.owner}}</p>
+</div>
+		{% if tool.is_rented == "false" %}
+		<div id="reserve-form"> 
+		<form action="{% url 'reserve' tool.id %}" method="post" >
+	        {% csrf_token %}
+			
+			<div class="form-group">
+				<input autofocus class="form-control" type="text" name="renter" placeholder="Renter">
+			</div>
+			<div class="form-group">
+				<input   class="form-control" type="text" name="place" placeholder="Place">
+			</div>
+			<div class="form-group">
+				<label for="days">Days</label>
+				<input   class="form-control" type="number" id="days" name="days" min="1" max="30">
+			</div>
+			<div>
+				<button>Reserve</button>
+			</div>
+		</form>
+	</div>
+	{% else %}
+	<div>
+		{% for rent in renter %}
+		<div>
+			{{rent.tool}}Reserved By{{rent.renter}}
+		</div>
+		{% endfor %}
+
+	</div>
+	{% endif %}
+</div>
+</div>
+
+{% endblock %}

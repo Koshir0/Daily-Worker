@@ -1,0 +1,40 @@
+{% extends "worker/layout.html" %}
+
+{% block body %}
+	<h2>Seeker Page</h2>
+	<div id="worker">
+		{% for worker in workers %}
+		{% if not worker.is_superuser %}
+		<!-- <p style="color: red">SUPER {{worker.is_superuser}}</p> -->
+		
+			<div class="workcard">
+				{% if worker.picture != None%}
+				<div>
+					<img src="{{worker.picture}}" width="100" height="100" alt="AVATAR">
+				</div>
+				{% endif %}
+				<div>
+					
+					
+					{% if worker.title == None  %}
+						<p>{{worker.username}}</p>
+					{% else %}
+						<p>{{worker.title}}.{{worker.first_name}} {{worker.last_name}}</p>
+					{% endif %}
+				
+					
+					<p>{% if worker.email == None %}<p></p>{% else %}{{worker.email}}{% endif %}</p>
+					<p>{% if worker.country == None %}<p></p>{% else %}{{worker.country}}{% endif %}<span id="flag"></span></p>
+					<p>{% if worker.job == None %}<p></p>{% else %}{{worker.job}}{% endif %}</p>
+					<p>{% if worker.phone == None %}<p></p>{% else %}{{worker.phone}}{% endif %}</p>
+
+				</div>
+					
+			</div>
+			{% endif %}
+				
+		
+		{% endfor %}
+
+	</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "worker/layout.html" %}
+
+{% block body %}
+<div class="container-fluid">
+<div class="workshop">
+
+	<div class="jumbotron">
+		<h1>Daily Worker</h1>
+		<p>Are you search for bricklayer, labourers or Tools in construction industry? You Are in the Right place.</p>
+	</div>
+
+	<main>
+		
+		
+		<div id="ourjob">
+			<div><p>Rent industrial </p></div>
+			<div><p>support labourers</p> </div>
+			<div><p>help Seekers</p></div>
+		</div>
+		
+		<div id="about">
+			<h1>About the project</h1>
+			<p>This is a project for all who search for Labourers in construction industry and for Labourers themselves who effected by covid 19</p>
+			<p>Also you can rent tools to use it in few days!</p>
+		</div>
+
+
+		 {% if user.is_authenticated %}
+		 <div id="whoareyou">
+
+		 	<div class="whoareyou" >
+		 		<p>Are You A Labourer?</p>
+		 		<p><a href="{% url 'worker'%}" >Add your info here!</a></p>
+		 	</div>
+		 	<div class="whoareyou" id="or">
+		 		<p>OR</p>
+		 	</div>
+		 	<div class="whoareyou">
+		 		<p>Are You A Seeker?</p>
+		 		<p><a href="{% url 'seeker'%}">Find the Labourers here</a></p>
+		 	</div>
+		 </div>
+		 {% endif %}
+
+
+		<div id="tool">
+			<h1>Tools To Rent</h1>
+			<p>Are you looking for the tools to rent for a few days</p>
+			<p>Here some of it</p>
+			<div id="tools">
+				<img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/Demolition_Tool_Rental/pro-breaker.jpg">
+				<img src="https://www.gaithersburg-rentals.com/images/GaithersburgRental-HusqvarnaChainSaw1.jpg">
+				<img src="https://www.hirestation.co.uk/images/hs/product/hire-cement-mixer-warrior-wheelbarrow-combi-pack_Cement_Mixer_Warrior_Wheelbarrow_Combi_Pack_1_6.png">
+			</div>
+		</div>
+
+		
+
+
+
+		
+		<div id="rent">
+			<h1>Rent Here!</h1>
+			<p>you can show your tools for others <a href="{% url 'rent' %}">here</a></p>
+			
+		</div>
+
+
+
+	</main>
+
+
+	<footer>
+		<div>
+			<h2>who am I? Koshir0 Desu</h2>
+		
+			<div id="span">
+				<span>GitHub</span>
+				<span>CodePen</span>
+				<span>Twitter</span>
+				<span>Dev</span>
+			</div>
+		</div>
+	</footer>
+</div>
+</div>
+{% endblock %}
